@@ -17,6 +17,7 @@
                     .Quantity += 1;
             }
             else { CartItems.Add(item); }
+        }
 
         public void removeItem(int itemId)
         {
