@@ -1,7 +1,20 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
+using OnlineStoreCore.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+#region Db Context
+
+builder.Services.AddDbContext<OnlineStoreCoreContext>(options =>
+{
+    options.UseSqlServer("Data Source=.;Initial Catalog=OnlineStoreCore_DB;Integrated Security=true");
+});
+
+#endregion
 
 var app = builder.Build();
 
