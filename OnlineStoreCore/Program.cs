@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<OnlineStoreCoreContext>(options =>
 {
-    options.UseSqlServer("Data Source=.;Initial Catalog=OnlineStoreCore_DB;Integrated Security=true");
+    options.UseSqlServer("Data Source=.;Initial Catalog=OnlineStoreCore_DB;Integrated Security=true;TrustServerCertificate = true;");
 });
 
 #endregion
