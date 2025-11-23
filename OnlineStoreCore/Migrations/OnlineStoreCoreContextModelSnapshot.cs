@@ -39,7 +39,7 @@ namespace OnlineStoreCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("categories");
+                    b.ToTable("Categories");
                 });
 #pragma warning restore 612, 618
         }
