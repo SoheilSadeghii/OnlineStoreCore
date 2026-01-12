@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineStoreCore.Data;
 
@@ -10,9 +11,11 @@ using OnlineStoreCore.Data;
 namespace OnlineStoreCore.Migrations
 {
     [DbContext(typeof(OnlineStoreCoreContext))]
-    partial class OnlineStoreCoreContextModelSnapshot : ModelSnapshot
+    [Migration("20260117162611_CreateInit")]
+    partial class CreateInit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

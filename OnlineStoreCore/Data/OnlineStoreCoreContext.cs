@@ -19,20 +19,23 @@ namespace OnlineStoreCore.Data
         {
             modelBuilder.Entity<CategoryToProduct>()
                 .HasKey(t => new { t.ProductId, t.CategoryId });
-            modelBuilder.Entity<Product>(
-                p =>
-                {
-                    p.HasKey(w => w.Id);
-                    p.OwnsOne<Item>(w => w.Item);
-                    p.HasOne<Item>(w => w.Item).WithOne(w => w.Product)
-                    .HasForeignKey<Item>(w => w.Id);
-                });
+
+            //modelBuilder.Entity<Product>(
+            //    p =>
+            //    {
+            //        p.HasKey(w => w.Id);
+            //        p.OwnsOne<Item>(w => w.Item);
+            //        p.HasOne<Item>(w => w.Item).WithOne(w => w.Product)
+            //        .HasForeignKey<Item>(w => w.Id);
+            //    });
+
             modelBuilder.Entity<Item>(
                 i =>
                 {
                     i.Property(w => w.Price).HasColumnType("Money");
                     i.HasKey(w => w.Id);
                 });
+
             #region Seed Data Category
 
             modelBuilder.Entity<Category>().HasData(new Category()
@@ -65,19 +68,19 @@ namespace OnlineStoreCore.Data
                 {
                     Id = 1,
                     Price = 854.0M,
-                    QuantityInStock = 5,
+                    QuantityInStock = 5
                 },
                 new Item()
                 {
                     Id = 2,
                     Price = 3323.0M,
-                    QuantityInStock = 8,
+                    QuantityInStock = 8
                 },
                 new Item()
                 {
                     Id = 3,
                     Price = 2500,
-                    QuantityInStock = 3,
+                    QuantityInStock = 3
                 });
 
             modelBuilder.Entity<Product>().HasData(
