@@ -18,7 +18,9 @@ namespace OnlineStoreCore.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var products = _context.Products.ToList();
+
+            return View(products);
         }
 
         [Route("/ContactUs")]
