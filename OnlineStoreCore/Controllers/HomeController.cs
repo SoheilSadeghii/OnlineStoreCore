@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using OnlineStoreCore.Data;
 using OnlineStoreCore.Models;
 
 namespace OnlineStoreCore.Controllers
@@ -7,10 +8,12 @@ namespace OnlineStoreCore.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private OnlineStoreCoreContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, OnlineStoreCoreContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
