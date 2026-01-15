@@ -23,6 +23,11 @@ namespace OnlineStoreCore.Controllers
             return View(products);
         }
 
+        public IActionResult Details(int id)
+        {
+            return null;
+        }
+
         [Route("/ContactUs")]
         public IActionResult ContactUs()
         {
