@@ -6,8 +6,16 @@
 
 <div class="text-center">
     <h1 class="display-4">به فروشگاه ما خوش آمدید!</h1>
-    @foreach(var item in Model)
+    @foreach (var item in Model)
     {
-        <h1>@item.Name</h1>
+        <div class="col-3">
+            <div class="card">
+                <img src="~/images/@item.Id" height="160" width="160" class="card-img-top img-thumbnail" />
+                <div class="card-body">
+                    <h5 class="card-title">@item.Item</h5>
+                    <a>جزئیات محصول</a>
+                </div>
+            </div>
+        </div>
     }
 </div>
