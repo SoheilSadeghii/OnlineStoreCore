@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using OnlineStoreCore.Data;
 using OnlineStoreCore.Models;
 
@@ -34,7 +35,13 @@ namespace OnlineStoreCore.Controllers
                 .SelectMany(c => c.CategoryToProducts)
                 .Select(ca => ca.Category).ToList();
 
-            return null;
+            var vm = new DetailsViewModel()
+            {
+                Product = product,
+                Categories = categories
+            };
+
+            return View(vm);
         }
 
         [Route("/ContactUs")]
