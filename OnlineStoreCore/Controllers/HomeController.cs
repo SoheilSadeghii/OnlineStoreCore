@@ -25,6 +25,15 @@ namespace OnlineStoreCore.Controllers
 
         public IActionResult Details(int id)
         {
+            var product = _context.Products.Find(id);
+
+            if (product == null) return NotFound();
+
+            var categories = _context.Products
+                .Where(n => n.Id == id)
+                .SelectMany(c => c.CategoryToProducts)
+                .Select(ca => ca.Category).ToList();
+
             return null;
         }
 
