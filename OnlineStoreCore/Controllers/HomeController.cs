@@ -44,6 +44,11 @@ namespace OnlineStoreCore.Controllers
             return View(vm);
         }
 
+        public IActionResult AddToCart(int itemId)
+        {
+            return null;
+        }
+
         [Route("/ContactUs")]
         public IActionResult ContactUs()
         {
