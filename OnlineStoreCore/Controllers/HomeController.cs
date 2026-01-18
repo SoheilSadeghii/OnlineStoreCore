@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using OnlineStoreCore.Data;
 using OnlineStoreCore.Models;
@@ -26,7 +27,7 @@ namespace OnlineStoreCore.Controllers
 
         public IActionResult Details(int id)
         {
-            var product = _context.Products.Find(id);
+            var product = _context.Products.Include(n => n.Item).SingleOrDefault(p => p.Id == id);
 
             if (product == null) return NotFound();
 
