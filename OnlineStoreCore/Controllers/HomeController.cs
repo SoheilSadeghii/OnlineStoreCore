@@ -61,7 +61,12 @@ namespace OnlineStoreCore.Controllers
                 _cart.addItem(cartItem);
             }
 
-            return null;
+            return RedirectToAction("ShowCart");
+        }
+
+        public IActionResult ShowCart()
+        {
+            return View();
         }
 
         [Route("/ContactUs")]
