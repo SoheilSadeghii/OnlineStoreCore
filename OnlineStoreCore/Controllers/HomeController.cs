@@ -11,6 +11,7 @@ namespace OnlineStoreCore.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private OnlineStoreCoreContext _context;
+        private static Cart _cart = new Cart();
 
         public HomeController(ILogger<HomeController> logger, OnlineStoreCoreContext context)
         {
@@ -47,6 +48,19 @@ namespace OnlineStoreCore.Controllers
 
         public IActionResult AddToCart(int itemId)
         {
+            var product = _context.Products.Include(p => p.Item).SingleOrDefault(p => p.ItemId == itemId);
+
+            if (product != null)
+            {
+                var cartItem = new CartItem()
+                {
+                    Item = product.Item,
+                    Quantity = 1
+                };
+
+                _cart.addItem(cartItem);
+            }
+
             return null;
         }
 
