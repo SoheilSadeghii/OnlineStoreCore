@@ -66,7 +66,13 @@ namespace OnlineStoreCore.Controllers
 
         public IActionResult ShowCart()
         {
-            return View();
+            var CartVM = new CartViewModel()
+            {
+                CartItems = _cart.CartItems,
+                OrderTotal=_cart.CartItems.Sum(c=>c.getTotalPrice())
+            };
+
+            return View(CartVM);
         }
 
         [Route("/ContactUs")]
