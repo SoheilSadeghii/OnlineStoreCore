@@ -7,7 +7,7 @@
         public int Quantity { get; set; }
         public decimal getTotalPrice()
         {
-            return Item.Price = Quantity;
+            return Item.Price * Quantity;
         }
     }
 }
