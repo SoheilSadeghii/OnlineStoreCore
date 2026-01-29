@@ -14,7 +14,7 @@ namespace OnlineStoreCore.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(_context.Categories);
+            return View("/Views/Components/ProductGroupsComponent.cshtml", _context.Categories);
         }
     }
 }
