@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OnlineStoreCore.Data;
 
 namespace OnlineStoreCore.Controllers
@@ -10,9 +11,17 @@ namespace OnlineStoreCore.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+
+        [Route("Group/{id}/{name}")]
+        public IActionResult ShowProductByGroupId(int id, string name)
         {
-            return View();
+            var product = _context.CategoryToProducts
+                .Where(c => c.CategoryId == id)
+                .Include(c => c.Product)
+                .Select(c => c.Product)
+                .ToList();
+
+            return View(product);
         }
     }
 }
