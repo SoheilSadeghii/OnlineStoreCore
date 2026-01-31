@@ -15,6 +15,7 @@ namespace OnlineStoreCore.Controllers
         [Route("Group/{id}/{name}")]
         public IActionResult ShowProductByGroupId(int id, string name)
         {
+            ViewData["GroupName"] = name;
             var product = _context.CategoryToProducts
                 .Where(c => c.CategoryId == id)
                 .Include(c => c.Product)
