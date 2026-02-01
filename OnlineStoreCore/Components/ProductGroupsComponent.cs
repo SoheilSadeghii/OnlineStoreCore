@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineStoreCore.Data;
+using OnlineStoreCore.Models;
 
 namespace OnlineStoreCore.Components
 {
@@ -14,7 +15,15 @@ namespace OnlineStoreCore.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View("/Views/Components/ProductGroupsComponent.cshtml", _context.Categories);
+            var categories = _context.Categories
+                .Select(c => new ShowGroupViewModel()
+                {
+                    GroupId = c.Id,
+                    Name = c.Name,
+                    ProductCount = _context.CategoryToProducts.Count(g => g.CategoryId == c.Id)
+                }).ToList();
+
+            return View("/Views/Components/ProductGroupsComponent.cshtml", categories);
         }
     }
 }
