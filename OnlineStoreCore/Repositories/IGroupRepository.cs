@@ -1,11 +1,12 @@
-﻿using OnlineStoreCore.Models;
+﻿using OnlineStoreCore.Data;
+using OnlineStoreCore.Models;
 
 namespace OnlineStoreCore.Repositories
 {
     public interface IGroupRepository
     {
         public IEnumerable<Category> GetAllCategories();
-        public IEnumerable<CategoryToProduct> GetGroupForShow();
+        public IEnumerable<ShowGroupViewModel> GetGroupForShow();
     }
 
     public class GroupRepository : IGroupRepository
@@ -15,7 +16,7 @@ namespace OnlineStoreCore.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<CategoryToProduct> GetGroupForShow()
+        public IEnumerable<ShowGroupViewModel> GetGroupForShow()
         {
             throw new NotImplementedException();
         }
