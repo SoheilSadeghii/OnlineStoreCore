@@ -1,27 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineStoreCore.Data;
 using OnlineStoreCore.Models;
+using OnlineStoreCore.Repositories;
 
 namespace OnlineStoreCore.Components
 {
     public class ProductGroupsComponent : ViewComponent
     {
-        private OnlineStoreCoreContext _context;
+        private IGroupRepository _groupRepository;
 
-        public ProductGroupsComponent(OnlineStoreCoreContext context)
+        public ProductGroupsComponent(IGroupRepository groupRepository)
         {
-            _context = context;
+            _groupRepository = groupRepository;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var categories = _context.Categories
-                .Select(c => new ShowGroupViewModel()
-                {
-                    GroupId = c.Id,
-                    Name = c.Name,
-                    ProductCount = _context.CategoryToProducts.Count(g => g.CategoryId == c.Id)
-                }).ToList();
+            var categories = _groupRepository.GetGroupForShow();
 
             return View("/Views/Components/ProductGroupsComponent.cshtml", categories);
         }

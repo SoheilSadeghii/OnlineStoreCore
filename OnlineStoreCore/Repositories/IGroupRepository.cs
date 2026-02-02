@@ -11,6 +11,12 @@ namespace OnlineStoreCore.Repositories
 
     public class GroupRepository : IGroupRepository
     {
+        private OnlineStoreCoreContext _context;
+        public GroupRepository(OnlineStoreCoreContext context)
+        {
+            _context = context;
+        }
+
         public IEnumerable<Category> GetAllCategories()
         {
             throw new NotImplementedException();
@@ -18,7 +24,13 @@ namespace OnlineStoreCore.Repositories
 
         public IEnumerable<ShowGroupViewModel> GetGroupForShow()
         {
-            throw new NotImplementedException();
+            return _context.Categories
+                .Select(c => new ShowGroupViewModel
+                {
+                    GroupId = c.Id,
+                    Name = c.Name,
+                    ProductCount = _context.CategoryToProducts.Count(g => g.CategoryId == c.Id)
+                }).ToList();
         }
     }
 }
