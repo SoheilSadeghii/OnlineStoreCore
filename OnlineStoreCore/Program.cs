@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
 using OnlineStoreCore.Data;
+using OnlineStoreCore.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,12 @@ builder.Services.AddDbContext<OnlineStoreCoreContext>(options =>
 {
     options.UseSqlServer("Data Source=.;Initial Catalog=OnlineStoreCore_DB;Integrated Security=true;TrustServerCertificate = true;");
 });
+
+#endregion
+
+# region IoC
+
+builder.Services.AddScoped<IGroupRepository, GroupRepository>();
 
 #endregion
 
