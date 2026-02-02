@@ -4,18 +4,18 @@ namespace OnlineStoreCore.Repositories
 {
     public interface IGroupRepository
     {
-        public List<Category> GetAllCategories();
-        public List<CategoryToProduct> GetGroupForShow();
+        public IEnumerable<Category> GetAllCategories();
+        public IEnumerable<CategoryToProduct> GetGroupForShow();
     }
 
     public class GroupRepository : IGroupRepository
     {
-        public List<Category> GetAllCategories()
+        public IEnumerable<Category> GetAllCategories()
         {
             throw new NotImplementedException();
         }
 
-        public List<CategoryToProduct> GetGroupForShow()
+        public IEnumerable<CategoryToProduct> GetGroupForShow()
         {
             throw new NotImplementedException();
         }
