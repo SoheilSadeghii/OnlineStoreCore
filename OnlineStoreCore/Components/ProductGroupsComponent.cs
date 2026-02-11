@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineStoreCore.Data;
+using OnlineStoreCore.Data.Repositories;
 using OnlineStoreCore.Models;
-using OnlineStoreCore.Repositories;
 
 namespace OnlineStoreCore.Components
 {

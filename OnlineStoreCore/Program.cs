@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
 using OnlineStoreCore.Data;
-using OnlineStoreCore.Repositories;
+using OnlineStoreCore.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

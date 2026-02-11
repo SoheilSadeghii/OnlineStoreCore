@@ -1,7 +1,7 @@
 ﻿using OnlineStoreCore.Data;
 using OnlineStoreCore.Models;
 
-namespace OnlineStoreCore.Repositories
+namespace OnlineStoreCore.Data.Repositories
 {
     public interface IGroupRepository
     {
