@@ -1,20 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineStoreCore.Models
 {
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="لطفا {0} را وارد کنید!")]
         [MaxLength(300)]
         [EmailAddress]
         [Display(Name = "ایمیل")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید!")]
         [MaxLength(50)]
         [DataType(DataType.Password)]
         [Display(Name = "کلمه عبور")]
         public string Password { get; set; }
-        [Required]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید!")]
         [MaxLength(50)]
         [DataType(DataType.Password)]
         [Compare("Password")]
