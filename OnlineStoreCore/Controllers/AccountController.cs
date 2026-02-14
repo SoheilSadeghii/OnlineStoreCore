@@ -38,7 +38,7 @@ namespace OnlineStoreCore.Controllers
 
             _userRepository.AddUser(user);
 
-            return View();
+            return View("SuccessRegister", register);
         }
     }
 }
