@@ -20,6 +20,7 @@ builder.Services.AddDbContext<OnlineStoreCoreContext>(options =>
 # region IoC
 
 builder.Services.AddScoped<IGroupRepository, GroupRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 #endregion
 
