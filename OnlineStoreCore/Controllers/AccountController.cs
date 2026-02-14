@@ -11,6 +11,7 @@ namespace OnlineStoreCore.Controllers
         {
             _userRepository = userRepository;
         }
+
         [HttpGet]
         public IActionResult Register()
         {
@@ -21,6 +22,21 @@ namespace OnlineStoreCore.Controllers
         public IActionResult Register(RegisterViewModel register)
         {
             if (!ModelState.IsValid) { return View(register); }
+
+            if (_userRepository.IsExistUserByEmail(register.Email.ToLower()))
+            {
+                ModelState.AddModelError("Email", "ایمیل وارد شده از قبل ثبت نام کرده است.");
+                return View(register);
+            }
+
+            User user = new User()
+            {
+                Email = register.Email.ToLower(),
+                Password = register.Password,
+                IsAdmin = false
+            };
+
+            _userRepository.AddUser(user);
 
             return View();
         }
