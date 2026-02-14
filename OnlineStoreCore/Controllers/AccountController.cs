@@ -32,6 +32,8 @@ namespace OnlineStoreCore.Controllers
             User user = new User()
             {
                 Email = register.Email.ToLower(),
+                FullName = "Null",
+                RegisterDate = DateTime.Now,
                 Password = register.Password,
                 IsAdmin = false
             };
