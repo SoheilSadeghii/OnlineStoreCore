@@ -6,6 +6,7 @@ namespace OnlineStoreCore.Data.Repositories
     {
         void AddUser(User user);
         bool IsExistUserByEmail(string email);
+        User GetUserForLogin(string email,string password);
     }
 
     public class UserRepository : IUserRepository
@@ -24,6 +25,12 @@ namespace OnlineStoreCore.Data.Repositories
         public bool IsExistUserByEmail(string email)
         {
             return _context.Users.Any(e => e.Email == email);
+        }
+
+        public User GetUserForLogin(string email, string password)
+        {
+            return _context.Users
+                .SingleOrDefault(e => e.Email == email && e.Password == password);
         }
     }
 }
