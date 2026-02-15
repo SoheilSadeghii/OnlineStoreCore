@@ -46,5 +46,21 @@ namespace OnlineStoreCore.Controllers
         }
 
         #endregion
+
+        #region Login
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(LoginViewModel login)
+        {
+            return View();
+        }
+
+        #endregion
     }
 }
