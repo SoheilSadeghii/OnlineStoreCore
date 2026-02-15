@@ -12,6 +12,8 @@ namespace OnlineStoreCore.Controllers
             _userRepository = userRepository;
         }
 
+        #region Register
+
         [HttpGet]
         public IActionResult Register()
         {
@@ -42,5 +44,7 @@ namespace OnlineStoreCore.Controllers
 
             return View("SuccessRegister", register);
         }
+
+        #endregion
     }
 }
