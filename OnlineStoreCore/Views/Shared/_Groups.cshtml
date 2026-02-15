@@ -7,7 +7,7 @@
     <div class="dropdown-menu" aria-labelledby="dropdown08">
         @foreach (var item in _groupRepository.GetAllCategories())
         {
-            <a class="dropdown-item" href="/Groups/@item.Name/@item.Id">@item.Name</a>
+            <a class="dropdown-item" href="/Group/@item.Id/@item.Name">@item.Name</a>
         }
     </div>
 </li>
