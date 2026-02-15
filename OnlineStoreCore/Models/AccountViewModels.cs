@@ -5,6 +5,10 @@ namespace OnlineStoreCore.Models
 {
     public class RegisterViewModel
     {
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید!")]
+        [MaxLength(300)]
+        [Display(Name ="نام و نام خانوادگی")]
+        public string FullName { get; set; }
         [Required(ErrorMessage ="لطفا {0} را وارد کنید!")]
         [MaxLength(300)]
         [EmailAddress]

@@ -32,7 +32,7 @@ namespace OnlineStoreCore.Controllers
             User user = new User()
             {
                 Email = register.Email.ToLower(),
-                FullName = "Null",
+                FullName = register.FullName,
                 RegisterDate = DateTime.Now,
                 Password = register.Password,
                 IsAdmin = false
