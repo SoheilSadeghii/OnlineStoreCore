@@ -58,6 +58,12 @@ namespace OnlineStoreCore.Controllers
         [HttpPost]
         public IActionResult Login(LoginViewModel login)
         {
+            if (!ModelState.IsValid) { return View(login); }
+
+            var user = _userRepository.GetUserForLogin(login.Email.ToLower(), login.Password);
+
+            if (user == null) { ModelState.AddModelError("Email", "اطلاعات صحیح نیست"); return View(login); }
+
             return View();
         }
 
