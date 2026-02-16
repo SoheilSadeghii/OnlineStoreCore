@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using OnlineStoreCore.Data.Repositories;
 using OnlineStoreCore.Models;
+using System.Security.Claims;
 
 namespace OnlineStoreCore.Controllers
 {
@@ -64,7 +67,24 @@ namespace OnlineStoreCore.Controllers
 
             if (user == null) { ModelState.AddModelError("Email", "اطلاعات صحیح نیست"); return View(login); }
 
-            return View();
+            var claims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Name, user.FullName),
+                new Claim(ClaimTypes.Email, user.Email.ToLower())
+            };
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var principal = new ClaimsPrincipal(identity);
+
+            var properties = new AuthenticationProperties
+            {
+                IsPersistent = login.RememberMe
+            };
+
+            HttpContext.SignInAsync(principal, properties); 
+
+            return Redirect("/");
         }
 
         #endregion
