@@ -88,5 +88,12 @@ namespace OnlineStoreCore.Controllers
         }
 
         #endregion
+
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return Redirect("/Account/Login");
+        }
     }
 }
