@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
@@ -46,6 +47,7 @@ namespace OnlineStoreCore.Controllers
             return View(vm);
         }
 
+        [Authorize]
         public IActionResult AddToCart(int itemId)
         {
             var product = _context.Products.Include(p => p.Item).SingleOrDefault(p => p.ItemId == itemId);
@@ -64,6 +66,7 @@ namespace OnlineStoreCore.Controllers
             return RedirectToAction("ShowCart");
         }
 
+        [Authorize]
         public IActionResult ShowCart()
         {
             var CartVM = new CartViewModel()
