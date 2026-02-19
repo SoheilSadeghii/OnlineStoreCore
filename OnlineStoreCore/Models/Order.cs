@@ -16,5 +16,6 @@ namespace OnlineStoreCore.Models
 
         // Navigation Property
         public User Users { get; set; }
+        public List<OrderDetail> OrderDetails  { get; set; }
     }
 }
