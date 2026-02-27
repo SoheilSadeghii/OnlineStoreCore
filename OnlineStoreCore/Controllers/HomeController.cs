@@ -105,7 +105,7 @@ namespace OnlineStoreCore.Controllers
         {
             int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier).ToString());
 
-            var order = _context.Orders.Where(o => o.UserID == userId)
+            var order = _context.Orders.Where(o => o.UserID == userId && !o.IsFinaly)
                 .Include(o => o.OrderDetails)
                 .ThenInclude(o => o.Product).FirstOrDefault();
 
