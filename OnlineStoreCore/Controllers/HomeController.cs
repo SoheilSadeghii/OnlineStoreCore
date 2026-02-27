@@ -103,8 +103,13 @@ namespace OnlineStoreCore.Controllers
         [Authorize]
         public IActionResult ShowCart()
         {
+            int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier).ToString());
 
-            return View();
+            var order = _context.Orders.Where(o => o.UserID == userId)
+                .Include(o => o.OrderDetails)
+                .ThenInclude(o => o.Product).FirstOrDefault();
+
+            return View(order);
         }
 
         public IActionResult RemoveCart(int itemId)
