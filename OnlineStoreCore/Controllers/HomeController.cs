@@ -55,7 +55,7 @@ namespace OnlineStoreCore.Controllers
 
             if (product != null)
             {
-                int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).ToString());
+                int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier).ToString());
                 var order = _context.Orders.FirstOrDefault(o => o.UserID == userId && !o.IsFinaly);
                 if (order != null)
                 {
