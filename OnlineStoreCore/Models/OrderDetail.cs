@@ -20,6 +20,6 @@ namespace OnlineStoreCore.Models
         // Navigation Property
         public Order Order { get; set; }
         [ForeignKey("ProductId")]
-        public Product MyProperty { get; set; }
+        public Product Product { get; set; }
     }
 }
