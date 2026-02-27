@@ -13,6 +13,8 @@ namespace OnlineStoreCore.Models
         public int ProductId { get; set; }
         [Required]
         public decimal Price { get; set; }
+        [Required]
+        public int Count { get; set; }
 
 
         // Navigation Property
