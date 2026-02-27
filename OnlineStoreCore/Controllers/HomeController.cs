@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -54,13 +55,29 @@ namespace OnlineStoreCore.Controllers
 
             if (product != null)
             {
-                var cartItem = new CartItem()
+                int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).ToString());
+                var order = _context.Orders.FirstOrDefault(o => o.UserID == userId && !o.IsFinaly);
+                if (order != null) { }
+                else
                 {
-                    Item = product.Item,
-                    Quantity = 1
-                };
+                    order = new Order()
+                    {
+                        IsFinaly = false,
+                        CreateDate = DateTime.Now,
+                        UserID = userId
+                    };
 
-                _cart.addItem(cartItem);
+                    _context.Orders.Add(order);
+                    _context.OrderDetails.Add(new OrderDetail()
+                    {
+                        OrderId = order.OrderId,
+                        ProductId = product.Id,
+                        Price = product.Item.Price
+                    });
+
+                }
+
+                _context.SaveChanges();
             }
 
             return RedirectToAction("ShowCart");
