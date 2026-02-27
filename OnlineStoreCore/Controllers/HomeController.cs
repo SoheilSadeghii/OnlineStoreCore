@@ -13,7 +13,6 @@ namespace OnlineStoreCore.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private OnlineStoreCoreContext _context;
-        private static Cart _cart = new Cart();
 
         public HomeController(ILogger<HomeController> logger, OnlineStoreCoreContext context)
         {
@@ -110,7 +109,6 @@ namespace OnlineStoreCore.Controllers
 
         public IActionResult RemoveCart(int itemId)
         {
-            _cart.removeItem(itemId);
 
             return RedirectToAction("ShowCart");
         }
