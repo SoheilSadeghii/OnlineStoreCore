@@ -23,7 +23,7 @@
                     <td>@item.Count</td>
                     <td>@item.Count * @item.Price</td>
                     <td>
-                        <a class="btn btn-danger" asp-action="RemoveCart" asp-route-itemId="@item.ProductId">حذف</a>
+                        <a class="btn btn-danger" asp-action="RemoveCart" asp-route-detailId="@item.DetailId">حذف</a>
                     </td>
                 </tr>
             }

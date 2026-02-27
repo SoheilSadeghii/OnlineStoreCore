@@ -112,8 +112,11 @@ namespace OnlineStoreCore.Controllers
             return View(order);
         }
 
-        public IActionResult RemoveCart(int itemId)
+        public IActionResult RemoveCart(int detailId)
         {
+            var orderDetail = _context.OrderDetails.Find(detailId);
+            _context.Remove(orderDetail);
+            _context.SaveChanges();
 
             return RedirectToAction("ShowCart");
         }
