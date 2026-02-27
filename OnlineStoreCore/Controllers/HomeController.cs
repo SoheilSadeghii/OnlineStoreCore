@@ -84,6 +84,7 @@ namespace OnlineStoreCore.Controllers
                     };
 
                     _context.Orders.Add(order);
+                    _context.SaveChanges();
                     _context.OrderDetails.Add(new OrderDetail()
                     {
                         OrderId = order.OrderId,
@@ -103,13 +104,8 @@ namespace OnlineStoreCore.Controllers
         [Authorize]
         public IActionResult ShowCart()
         {
-            var CartVM = new CartViewModel()
-            {
-                CartItems = _cart.CartItems,
-                OrderTotal = _cart.CartItems.Sum(c => c.getTotalPrice())
-            };
 
-            return View(CartVM);
+            return View();
         }
 
         public IActionResult RemoveCart(int itemId)
