@@ -57,7 +57,23 @@ namespace OnlineStoreCore.Controllers
             {
                 int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).ToString());
                 var order = _context.Orders.FirstOrDefault(o => o.UserID == userId && !o.IsFinaly);
-                if (order != null) { }
+                if (order != null)
+                {
+                    var orderDetail = _context.OrderDetails.FirstOrDefault(o => o.OrderId == order.OrderId && o.ProductId == product.Id);
+
+                    if (orderDetail != null) { orderDetail.Count += 1; }
+
+                    else
+                    {
+                        _context.OrderDetails.Add(new OrderDetail()
+                        {
+                            OrderId = order.OrderId,
+                            ProductId = product.Id,
+                            Price = product.Item.Price,
+                            Count = 1
+                        });
+                    }
+                }
                 else
                 {
                     order = new Order()
@@ -72,7 +88,8 @@ namespace OnlineStoreCore.Controllers
                     {
                         OrderId = order.OrderId,
                         ProductId = product.Id,
-                        Price = product.Item.Price
+                        Price = product.Item.Price,
+                        Count = 1
                     });
 
                 }
