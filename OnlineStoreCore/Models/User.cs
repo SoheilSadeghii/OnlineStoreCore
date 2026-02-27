@@ -18,5 +18,8 @@ namespace OnlineStoreCore.Models
         [Required]
         public DateTime RegisterDate { get; set; }
         public bool IsAdmin { get; set; }
+
+        // Navigation Property
+        public List<Order> Orders { get; set; }
     }
 }
