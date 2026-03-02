@@ -1,6 +1,33 @@
 ﻿@page
 @model OnlineStoreCore.Pages.Admin.IndexModel
 @{
+    ViewData["Title"] = "Index";
 }
 
 <h1>Admin</h1>
+<hr />
+<p><a asp-page="Add" class="myButton">افزودن کالا</a></p>
+<table>
+    <thead>
+        <tr>
+            <th>تصویر</th>
+            <th>نام</th>
+            <th>قیمت</th>
+            <th>دستورات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td><img src="/images/@(item.Item.Id).jpg" alt="Alternate Text" style="max-width: 200px; border: 1px solid gray;padding: 3px" /></td>
+                <td>@item.Name</td>
+                <td>@item.Item.Price</td>
+                <td>
+                    <a>ویرایش</a>
+                    <a>حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
