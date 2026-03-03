@@ -25,7 +25,7 @@
                 <td>@item.Item.Price</td>
                 <td>
                     <a asp-page="Edit" asp-route-id="@item.Id">ویرایش</a>
-                    <a>حذف</a>
+                    <a asp-page="Delete" asp-route-id="@item.Id">حذف</a>
                 </td>
             </tr>
         }
