@@ -59,7 +59,7 @@ namespace OnlineStoreCore.Pages.Admin
                 }
             }
 
-            return RedirectToAction("Index");
+            return RedirectToPage("Index");
         }
     }
 }
