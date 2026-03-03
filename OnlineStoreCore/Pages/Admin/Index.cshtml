@@ -24,7 +24,7 @@
                 <td>@item.Name</td>
                 <td>@item.Item.Price</td>
                 <td>
-                    <a>ویرایش</a>
+                    <a asp-page="Edit" asp-route-id="@item.Id">ویرایش</a>
                     <a>حذف</a>
                 </td>
             </tr>
