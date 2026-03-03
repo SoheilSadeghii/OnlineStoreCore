@@ -20,7 +20,7 @@
         @foreach (var item in Model.Products)
         {
             <tr>
-                <td><img src="/images/@(item.Item.Id).jpg" alt="Alternate Text" style="max-width: 200px; border: 1px solid gray;padding: 3px" /></td>
+                <td><img src="/images/@(item.Id).jpg" alt="Alternate Text" style="max-width: 200px; border: 1px solid gray;padding: 3px" /></td>
                 <td>@item.Name</td>
                 <td>@item.Item.Price</td>
                 <td>
