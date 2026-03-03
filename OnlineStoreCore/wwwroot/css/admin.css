@@ -39,7 +39,6 @@ nav {
     flex-flow: row wrap;
     justify-content: flex-start;
     height: calc(100vh - 48px);
-    width: 200px;
     background-color: #f8f9fa;
     color: #212529;
 }
