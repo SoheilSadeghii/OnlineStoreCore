@@ -3,4 +3,62 @@
 @{
 }
 
-<h1>Add Product</h1>
+<h1>افزودن کالا</h1>
+<hr />
+<form method="post" enctype="multipart/form-data">
+    <dl class="dl-horizotnal">
+        <dd>
+            <label asp-for="Product.Name"></label>
+        </dd>
+        <dt>
+            <input asp-for="Product.Name" class="form-control" />
+            <span asp-validation-for="Product.Name"></span>
+        </dt>
+    </dl>
+    <br />
+
+    <dl>
+        <dd>
+            <label asp-for="Product.Description"></label>
+        </dd>
+        <dt>
+            <textarea asp-for="Product.Description" class="form-control"></textarea>
+            <span asp-validation-for="Product.Description"></span>
+        </dt>
+    </dl>
+    <br />
+
+    <dl>
+        <dd>
+            <label asp-for="Product.Price"></label>
+        </dd>
+        <dt>
+            <input asp-for="Product.Price" class="form-control" />
+            <span asp-validation-for="Product.Price"></span>
+        </dt>
+    </dl>
+    <br />
+
+    <dl>
+        <dd>
+            <label asp-for="Product.QuantityInStock"></label>
+        </dd>
+        <dt>
+            <input asp-for="Product.QuantityInStock" class="form-control" />
+            <span asp-validation-for="Product.QuantityInStock"></span>
+        </dt>
+    </dl>
+    <br />
+
+    <dl>
+        <dd>
+            <label asp-for="Product.Picture"></label>
+        </dd>
+        <dt>
+            <input asp-for="Product.Picture" />
+            <span asp-validation-for="Product.Picture"></span>
+        </dt>
+    </dl>
+    <br />
+    <input type="submit"class="btn btn-success" value="ثبت" />
+</form>
