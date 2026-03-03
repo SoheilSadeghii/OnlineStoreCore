@@ -7,6 +7,7 @@
 <h1>ویرایش محصول</h1>
 <hr />
 <form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Product.Id" />
     <dl class="dl-horizotnal">
         <dd>
             <label asp-for="Product.Name"></label>
@@ -15,10 +16,9 @@
             <input asp-for="Product.Name" class="form-control" />
             <span asp-validation-for="Product.Name"></span>
         </dt>
-    </dl>
-    <br />
 
-    <dl>
+        <br />
+
         <dd>
             <label asp-for="Product.Description"></label>
         </dd>
@@ -26,10 +26,8 @@
             <textarea asp-for="Product.Description" class="form-control"></textarea>
             <span asp-validation-for="Product.Description"></span>
         </dt>
-    </dl>
-    <br />
+        <br />
 
-    <dl>
         <dd>
             <label asp-for="Product.Price"></label>
         </dd>
@@ -37,10 +35,8 @@
             <input asp-for="Product.Price" class="form-control" />
             <span asp-validation-for="Product.Price"></span>
         </dt>
-    </dl>
-    <br />
+        <br />
 
-    <dl>
         <dd>
             <label asp-for="Product.QuantityInStock"></label>
         </dd>
@@ -48,10 +44,8 @@
             <input asp-for="Product.QuantityInStock" class="form-control" />
             <span asp-validation-for="Product.QuantityInStock"></span>
         </dt>
-    </dl>
-    <br />
+        <br />
 
-    <dl>
         <dd>
             <label asp-for="Product.Picture"></label>
         </dd>
