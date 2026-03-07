@@ -1,0 +1,37 @@
+﻿@page
+@model OnlineStoreCore.Pages.Admin.ManageUsers.IndexModel
+@{
+    ViewData["Title"] = "کاربران";
+}
+
+<h1>مدیریت کاربران</h1>
+<hr />
+<p><a asp-page="Add" class="myButton">افزودن کالا</a></p>
+<table>
+    <thead>
+        <tr>
+            <th>نام و نام خانوادگی</th>
+            <th>ایمیل</th>
+            <th>تارخ ثبت نام</th>
+            <th>کلمه عبور</th>
+            <th>ادمین</th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Users)
+        {
+            <tr>                
+                <td>@item.FullName</td>
+                <td>@item.Email</td>
+                <td>@item.RegisterDate</td>
+                <td>@item.Password</td>
+                <td>@item.IsAdmin</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@item.UserId">ویرایش</a>
+                    <a asp-page="Delete" asp-route-id="@item.UserId">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
