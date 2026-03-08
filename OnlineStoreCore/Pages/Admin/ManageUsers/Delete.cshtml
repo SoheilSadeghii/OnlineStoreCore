@@ -1,0 +1,37 @@
+﻿@page
+@model OnlineStoreCore.Pages.Admin.ManageUsers.DeleteModel
+@{
+}
+
+<h1>حذف کاربر</h1>
+<hr />
+<form method="post">
+    <dl class="dl-horizotnal">
+        <dd><label asp-for="Users.FullName"></label></dd>
+        <dt>
+            <input asp-for="Users.FullName" class="form-control" readonly />
+            <span asp-validation-for="Users.FullName"></span>
+        </dt>
+        <br />
+
+        <dd><label asp-for="Users.Email"></label></dd>
+        <dt>
+            <textarea asp-for="Users.Email" class="form-control" readonly></textarea>
+            <span asp-validation-for="Users.Email"></span>
+        </dt>
+        <br />
+
+        <dd><label asp-for="Users.RegisterDate"></label></dd>
+        <dt>
+            <textarea asp-for="Users.RegisterDate" class="form-control" readonly></textarea>
+            <span asp-validation-for="Users.RegisterDate"></span>
+        </dt>
+        <br />
+        
+        <dt>
+            <input type="hidden" asp-for="Users.UserId" />
+            <input type="submit" class="btn btn-danger" value="حذف" />
+        </dt>
+    </dl>
+    <br />
+</form>
