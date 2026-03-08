@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
 using OnlineStoreCore.Data;
 using OnlineStoreCore.Data.Repositories;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,6 +53,27 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseAuthorization();
+
+#region Admin
+
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path.StartsWithSegments("/Admin"))
+    {
+        if (!context.User.Identity.IsAuthenticated)
+        {
+            context.Response.Redirect("/Account/Login");
+        }
+        else if (!bool.Parse(context.User.FindFirstValue("IsAdmin")))
+        {
+            context.Response.Redirect("/Account/Login");
+        }
+    }
+
+    await next.Invoke();
+});
+
+#endregion
 
 app.MapStaticAssets();
 

@@ -71,7 +71,8 @@ namespace OnlineStoreCore.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Name, user.FullName),
-                new Claim(ClaimTypes.Email, user.Email.ToLower())
+                new Claim(ClaimTypes.Email, user.Email.ToLower()),
+                new Claim("IsAdmin", user.IsAdmin.ToString())
             };
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -82,7 +83,7 @@ namespace OnlineStoreCore.Controllers
                 IsPersistent = login.RememberMe
             };
 
-            HttpContext.SignInAsync(principal, properties); 
+            HttpContext.SignInAsync(principal, properties);
 
             return Redirect("/");
         }
