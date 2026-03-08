@@ -1,0 +1,48 @@
+﻿@page
+@model OnlineStoreCore.Pages.Admin.ManageUsers.EditModel
+@{
+    ViewData["Title"] = "ویرایش کاربر";
+}
+
+<h1>ویرایش کاربر</h1>
+<hr />
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Users.UserId" />
+    <dl class="dl-horizotnal">
+        <dd>
+            <label asp-for="Users.FullName"></label>
+        </dd>
+        <dt>
+            <input asp-for="Users.FullName" class="form-control" />
+            <span asp-validation-for="Users.FullName"></span>
+        </dt>
+
+        <br />
+
+        <dd>
+            <label asp-for="Users.Email"></label>
+        </dd>
+        <dt>
+            <input asp-for="Users.Email" class="form-control" />
+            <span asp-validation-for="Users.Email"></span>
+        </dt>
+        <br />
+
+        <dd>
+            <label asp-for="Users.Password"></label>
+        </dd>
+        <dt>
+            <input asp-for="Users.Password" class="form-control" />
+            <span asp-validation-for="Users.Password"></span>
+        </dt>
+        <br />
+        <dd><label asp-for="Users.IsAdmin"></label></dd>
+        <dt>
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="Users.IsAdmin" />@Html.DisplayNameFor(model => model.Users.IsAdmin)
+            </label>
+        </dt>
+    </dl>
+    <br />
+    <input type="submit" class="btn btn-success" value="ثبت" />
+</form>
