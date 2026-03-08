@@ -20,6 +20,6 @@ namespace OnlineStoreCore.Models
         public bool IsAdmin { get; set; }
 
         // Navigation Property
-        public List<Order> Orders { get; set; }
+        //public List<Order> Orders { get; set; }
     }
 }
