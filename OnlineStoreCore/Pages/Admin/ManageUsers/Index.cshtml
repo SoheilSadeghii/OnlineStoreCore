@@ -26,7 +26,7 @@
                 <td>@item.Email</td>
                 <td>@item.RegisterDate</td>
                 <td>@item.Password</td>
-                <td>@item.IsAdmin</td>
+                <td>@Html.DisplayFor(modelItem => item.IsAdmin)</td>
                 <td>
                     <a asp-page="Edit" asp-route-id="@item.UserId">ویرایش</a>
                     <a asp-page="Delete" asp-route-id="@item.UserId">حذف</a>
