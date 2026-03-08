@@ -24,6 +24,7 @@ namespace OnlineStoreCore.Pages.Admin.ManageUsers
         {
             if (!ModelState.IsValid) return Page();
 
+            Users.RegisterDate = DateTime.Now;
             _context.Users.Add(Users);
             _context.SaveChanges();
 
