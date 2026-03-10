@@ -28,11 +28,11 @@ namespace OnlineStoreCore.Controllers
         {
             if (!ModelState.IsValid) { return View(register); }
 
-            if (_userRepository.IsExistUserByEmail(register.Email.ToLower()))
-            {
-                ModelState.AddModelError("Email", "ایمیل وارد شده از قبل ثبت نام کرده است.");
-                return View(register);
-            }
+            //if (_userRepository.IsExistUserByEmail(register.Email.ToLower()))
+            //{
+            //    ModelState.AddModelError("Email", "ایمیل وارد شده از قبل ثبت نام کرده است.");
+            //    return View(register);
+            //}
 
             User user = new User()
             {
@@ -46,6 +46,16 @@ namespace OnlineStoreCore.Controllers
             _userRepository.AddUser(user);
 
             return View("SuccessRegister", register);
+        }
+
+        public IActionResult VerifyEmail(string email)
+        {
+            if (_userRepository.IsExistUserByEmail(email.ToLower()))
+            {
+                return Json("ایمیل وارد شده از قبل ثبت نام کرده است.");
+            }
+
+            return Json(true);
         }
 
         #endregion

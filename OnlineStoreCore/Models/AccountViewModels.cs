@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace OnlineStoreCore.Models
@@ -13,6 +14,7 @@ namespace OnlineStoreCore.Models
         [MaxLength(300)]
         [EmailAddress]
         [Display(Name = "ایمیل")]
+        [Remote("VerifyEmail", "Account")]
         public string Email { get; set; }
         [Required(ErrorMessage = "لطفا {0} را وارد کنید!")]
         [MaxLength(50)]
