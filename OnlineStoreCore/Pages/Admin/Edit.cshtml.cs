@@ -1,3 +1,4 @@
+using AspNetCoreGeneratedDocument;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,9 @@ namespace OnlineStoreCore.Pages.Admin
 
         [BindProperty]
         public AddEditProductViewModel Product { get; set; }
+        [BindProperty]
+        public List<int> selectedGroups { get; set; }
+        public List<int> GroupsProduct { get; set; }
         public void OnGet(int id)
         {
             var product = _context.Products.Include(p => p.Item)
@@ -30,6 +34,11 @@ namespace OnlineStoreCore.Pages.Admin
                 }).FirstOrDefault();
 
             Product = product;
+
+            product.Categories = _context.Categories.ToList();
+
+            GroupsProduct = _context.CategoryToProducts.Where(c => c.ProductId == id)
+                .Select(s => s.CategoryId).ToList();
         }
 
         public IActionResult OnPost()
@@ -57,6 +66,23 @@ namespace OnlineStoreCore.Pages.Admin
                 {
                     Product.Picture.CopyTo(stream);
                 }
+            }
+
+            _context.CategoryToProducts.Where(c => c.ProductId == product.Id).ToList()
+                .ForEach(g => _context.CategoryToProducts.Remove(g));
+
+            if (selectedGroups.Any() && selectedGroups.Count() > 0)
+            {
+                foreach (var group in selectedGroups)
+                {
+                    _context.CategoryToProducts.Add(new CategoryToProduct()
+                    {
+                        CategoryId = group,
+                        ProductId = product.Id
+                    });
+                }
+
+                _context.SaveChanges();
             }
 
             return RedirectToPage("Index");
